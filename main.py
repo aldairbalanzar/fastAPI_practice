@@ -4,9 +4,7 @@ from pprint import pprint
 from mongo import Mongo
 
 mongo = Mongo()
-print(mongo.connection_string)
-mongo.connect()
-
+print(mongo.add_user({"username": "aldair"}))
 app = FastAPI()
 
 # @app.get("/")

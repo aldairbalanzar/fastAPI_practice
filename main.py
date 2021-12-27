@@ -1,10 +1,8 @@
 from typing import Optional
 from fastapi import FastAPI
-from pprint import pprint
 from mongo import Mongo
 
 mongo = Mongo()
-print(mongo.add_user({"username": "aldair"}))
 app = FastAPI()
 
 # @app.get("/")

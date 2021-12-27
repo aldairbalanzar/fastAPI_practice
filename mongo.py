@@ -5,7 +5,7 @@ from pprint import pprint
 
 class Mongo:
     def __init__(self):
-        load_dotenv()
+        load_dotenv(override=True)
         self.user = os.environ["MONGO_USER"]
         self.user_password = os.environ["MONGO_USER_PASSWORD"]
         self.db_name = os.environ["DB_NAME"]

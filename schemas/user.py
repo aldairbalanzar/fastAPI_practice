@@ -1,9 +1,10 @@
 def user_entity(user) -> dict:
     return {
         "id": str(user["_id"]),
-        "first_name": user["_first_name"],
-        "last_name": user["_last_name"],
-        "email": user["_email"]
+        "first_name": user["first_name"],
+        "last_name": user["last_name"],
+        "email": user["email"],
+        "dark_mode": user["dark_mode"]
     }
 
 def all_users_entity(collection) -> list:

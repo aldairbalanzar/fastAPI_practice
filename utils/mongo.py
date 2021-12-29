@@ -11,6 +11,6 @@ class Mongo:
         self.connection_string = f"mongodb+srv://{self.user}:{self.user_password}@cluster0.wq1zp.mongodb.net/{self.db_name}?retryWrites=true&w=majority"
         self.conn = MongoClient(self.connection_string)
         self.db = self.conn[os.environ["DB_NAME"]]
-        print("***** Mongo connected")
+        print("\t>>> Mongo connected")
 
 mongo = Mongo()

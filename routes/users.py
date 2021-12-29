@@ -2,18 +2,24 @@ from fastapi import APIRouter
 from utils.mongo import mongo
 from models.user import User
 from schemas.user import user_entity, all_users_entity
+from bson import ObjectId
 
-users = APIRouter()
-db = mongo.db
+users = APIRouter(prefix="/users")
+collection = mongo.db["users"]
 
-@users.get("/users")
+@users.get("/")
 async def find_all_users():
-    users_col = db["users"]
-    print(">>> getting all users")
-    return await all_users_entity(users_col.find())
+    print("\t>>> getting all users")
+    return await all_users_entity(collection.find())
 
-@users.post("/users")
+@users.get("/{user_id}")
+async def find_user(user_id: str):
+    print(f"\t>>> finding user with id: {user_id}")
+    found = collection.find_one({"_id": ObjectId(user_id)})
+    return user_entity(found)
+
+@users.post("/")
 async def post_user(user: User):
-        result = db.insert_one(user)
-        print(">>> posting a user")
-        return result
+        print("\t>>> posting a user")
+        collection.insert_one(dict(user))
+        return all_users_entity(collection.find())

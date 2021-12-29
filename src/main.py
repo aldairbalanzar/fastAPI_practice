@@ -14,13 +14,3 @@ def home_route():
         "route": "home",
         "greeting": "waddup"
     }
-    
-
-
-# @app.get("/items/{item_id}")
-# def query_route(item_id: int, q: Optional[str]=None):
-#     return {
-#         "route": "query",
-#         "item_id": item_id,
-#         "detail": q
-#     }

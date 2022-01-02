@@ -6,4 +6,5 @@ class User(BaseModel):
     last_name: str 
     email: str
     password: str
+    img_url: str
     dark_mode: bool = False

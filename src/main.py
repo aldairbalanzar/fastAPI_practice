@@ -1,5 +1,4 @@
 import sys, os
-print("*** " + os.path.abspath(os.path.join("..", "fastAPI_practice/routes")))
 sys.path.append(os.path.abspath(os.path.join("..", "fastAPI_practice/routes")))
 from fastapi import FastAPI
 from routes.users import users

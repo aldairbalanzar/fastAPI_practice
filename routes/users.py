@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from utils.mongo import mongo
+from utils.security import hash_password
 from models.user import User
 from schemas.user import user_entity, all_users_entity
 from bson import ObjectId
@@ -23,7 +24,9 @@ async def find_user(user_id: str):
 @users.post("/")
 async def post_user(user: User):
     print("\t>>> posting a user")
-    collection.insert_one(dict(user))
+    user = dict(user)
+    user["password"] = hash_password(user["password"])
+    collection.insert_one(user)
     return all_users_entity(collection.find())
 
 @users.put("/{user_id}")
